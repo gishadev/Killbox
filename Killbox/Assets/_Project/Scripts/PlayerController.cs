@@ -28,5 +28,10 @@ namespace Gisha.Killbox.Core
         {
             _rb.velocity = MoveInput * moveSpeed;
         }
+
+        public void Attack()
+        {
+            Debug.Log("Attack");
+        }
     }
 }
