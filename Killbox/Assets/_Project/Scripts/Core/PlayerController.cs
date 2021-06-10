@@ -33,10 +33,15 @@ namespace Gisha.Killbox.Core
 
         private void Update()
         {
-            if (MoveInput.magnitude > 0)
-                transform.rotation = Quaternion.LookRotation(MoveInput);
-
             AutoAim();
+
+            if (TargetEnemy != null)
+            {
+                var dirToEnemy = (TargetEnemy.transform.position - transform.position).normalized;
+                transform.rotation = Quaternion.LookRotation(dirToEnemy);
+            }
+            else if (MoveInput.magnitude > 0)
+                transform.rotation = Quaternion.LookRotation(MoveInput);
         }
 
         private void FixedUpdate()
