@@ -1,4 +1,6 @@
 using Gisha.Killbox.Armory;
+using Gisha.Killbox.NPC;
+using System.Linq;
 using UnityEngine;
 
 namespace Gisha.Killbox.Core
@@ -12,8 +14,9 @@ namespace Gisha.Killbox.Core
         [Header("Armory")]
         [SerializeField] private Weapon[] weapons = new Weapon[3];
 
-        public Vector3 MoveInput => new Vector3(joystick.Horizontal, 0f, joystick.Vertical).normalized;
         public Weapon SelectedWeapon => weapons[_selectedWeaponIndex];
+        public Enemy TargetEnemy { get; private set; }
+        public Vector3 MoveInput => new Vector3(joystick.Horizontal, 0f, joystick.Vertical).normalized;
 
         int _selectedWeaponIndex = 0;
         Rigidbody _rb;
@@ -32,6 +35,8 @@ namespace Gisha.Killbox.Core
         {
             if (MoveInput.magnitude > 0)
                 transform.rotation = Quaternion.LookRotation(MoveInput);
+
+            AutoAim();
         }
 
         private void FixedUpdate()
@@ -95,6 +100,28 @@ namespace Gisha.Killbox.Core
             }
 
             SelectedWeapon.gameObject.SetActive(true);
+        }
+
+        private void AutoAim()
+        {
+            Enemy[] nearbyEnemies = Physics.OverlapSphere(transform.position, SelectedWeapon.MinAimRadius)
+                .Where(x => x.CompareTag("Enemy"))
+                .Select(x => x.GetComponent<Enemy>())
+                .ToArray();
+
+            TargetEnemy = SelectedWeapon.FindNearestTarget(transform.position, nearbyEnemies);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, SelectedWeapon.MinAimRadius);
+
+            if (TargetEnemy != null)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawSphere(TargetEnemy.transform.position, 1f);
+            }
         }
     }
 }
