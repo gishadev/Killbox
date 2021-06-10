@@ -1,5 +1,4 @@
-﻿using Gisha.Killbox.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gisha.Killbox.Armory
 {
