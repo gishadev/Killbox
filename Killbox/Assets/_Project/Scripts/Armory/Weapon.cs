@@ -10,7 +10,8 @@ namespace Gisha.Killbox.Armory
 
         public float MinAimRadius => minAimRadius;
 
-        public abstract void Use();
+        public abstract void Use(Enemy targetEnemy);
+
         public Enemy FindNearestTarget(Vector3 playerPos, Enemy[] nearbyEnemies)
         {
             return nearbyEnemies

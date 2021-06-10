@@ -46,7 +46,7 @@ namespace Gisha.Killbox.Core
 
         public void Attack()
         {
-            SelectedWeapon.Use();
+            SelectedWeapon.Use(TargetEnemy);
         }
 
         public void SelectNextWeapon(int step)

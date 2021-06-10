@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027dc689ddc697c47bee7eb1f35bd2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAimRadius: 1
+  minAimRadius: 1.5
 --- !u!65 &668682394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a931aa0befa6a94c890d63d89a51444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAimRadius: 5
+  minAimRadius: 4
 --- !u!1 &1178389368
 GameObject:
   m_ObjectHideFlags: 0
