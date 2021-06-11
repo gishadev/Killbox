@@ -1,19 +1,19 @@
-﻿using Gisha.Killbox.NPC;
+﻿using Gisha.Killbox.Core;
+using Gisha.Killbox.NPC;
 using UnityEngine;
 
 namespace Gisha.Killbox.Armory
 {
     public class Melee : Weapon
     {
-        public override void Use(Enemy targetEnemy)
+        public override void Use(PlayerController player, Vector3 attackDirection)
         {
             Debug.Log("Smash!");
 
-            if (targetEnemy != null)
-                Destroy(targetEnemy.gameObject);
+            var hitInfo = SolidRaycast(player.transform.position, attackDirection, MinAimRadius);
 
-            else
-                Debug.Log("Fake swing.");
+            if (hitInfo.collider != null && hitInfo.collider.CompareTag("Enemy"))
+                Destroy(hitInfo.collider.gameObject);
         }
     }
 }
