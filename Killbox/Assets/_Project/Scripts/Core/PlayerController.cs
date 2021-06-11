@@ -117,6 +117,11 @@ namespace Gisha.Killbox.Core
             TargetEnemy = SelectedWeapon.FindNearestTarget(transform.position, nearbyEnemies);
         }
 
+        public void Die()
+        {
+            Debug.Log("<color=red>End of the wave! You died!</color>");
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
