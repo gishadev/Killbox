@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "4b36719a9905",
         "name": "com.Gisha.Killbox",
-        "processId": 8493,
+        "processId": 29721,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -24,6 +24,18 @@
             "deviceId": "4b36719a9905",
             "name": "com.Gisha.Killbox",
             "processId": 8493,
+            "exited": false
+        },
+        {
+            "deviceId": "4b36719a9905",
+            "name": "com.Gisha.Killbox",
+            "processId": 29247,
+            "exited": false
+        },
+        {
+            "deviceId": "4b36719a9905",
+            "name": "com.Gisha.Killbox",
+            "processId": 29721,
             "exited": false
         }
     ],

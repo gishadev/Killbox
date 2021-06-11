@@ -6,9 +6,10 @@ namespace Gisha.Killbox.NPC
     {
         [SerializeField] private float moveSpeed;
 
-
         Transform _target;
         Rigidbody _rb;
+
+
 
         private void Awake()
         {
@@ -23,6 +24,11 @@ namespace Gisha.Killbox.NPC
         private void FixedUpdate()
         {
             MoveTowardsPlayer();
+        }
+
+        private void OnDestroy()
+        {
+            FindObjectOfType<WaveManager>().OnEnemyDestroy(gameObject);
         }
 
         private void MoveTowardsPlayer()
